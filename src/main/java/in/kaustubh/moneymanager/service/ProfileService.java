@@ -41,7 +41,7 @@ public class ProfileService {
     public ProfileDTO registerProfile(ProfileDTO profileDTO) {
         ProfileEntity newProfile = toEntity(profileDTO);
         newProfile.setActivationToken(UUID.randomUUID().toString());
-        newProfile.setActive(true);
+        newProfile.setIsActive(true);
         newProfile = profileRepository.save(newProfile);
 
         seedDefaultCategories(newProfile);
