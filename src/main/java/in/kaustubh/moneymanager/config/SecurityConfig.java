@@ -50,6 +50,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
+            "https://money-manaager.netlify.app",
             "https://cerulean-shortbread-17424c.netlify.app",
             "https://vocal-figolla-32ee94.netlify.app",
             "https://money-manager-backend-c3sx.onrender.com",
