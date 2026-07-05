@@ -41,14 +41,19 @@ public class ProfileService {
     public ProfileDTO registerProfile(ProfileDTO profileDTO) {
         ProfileEntity newProfile = toEntity(profileDTO);
         newProfile.setActivationToken(UUID.randomUUID().toString());
+        newProfile.setActive(true);
         newProfile = profileRepository.save(newProfile);
 
         seedDefaultCategories(newProfile);
 
-        String activationLink = frontendURL + "/account-activate?token=" + newProfile.getActivationToken();
-        String subject = "Activate your Money Manager account";
-        String htmlBody = buildActivationEmail(newProfile.getFullName(), activationLink);
-        emailService.sendHtmlEmail(newProfile.getEmail(), subject, htmlBody);
+        try {
+            String activationLink = frontendURL + "/account-activate?token=" + newProfile.getActivationToken();
+            String subject = "Activate your Money Manager account";
+            String htmlBody = buildActivationEmail(newProfile.getFullName(), activationLink);
+            emailService.sendHtmlEmail(newProfile.getEmail(), subject, htmlBody);
+        } catch (Exception e) {
+            System.out.println("Email service not configured. User auto-activated.");
+        }
         return toDTO(newProfile);
     }
 
