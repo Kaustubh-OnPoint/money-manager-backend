@@ -1,0 +1,64 @@
+# Money Manager - Backend Configuration
+# Copy this file to application.properties and fill in your actual values
+
+# =====================
+# Server Configuration
+# =====================
+server.port=8080
+server.servlet.context-path=/
+
+# =====================
+# Database Configuration
+# =====================
+spring.datasource.url=jdbc:postgresql://localhost:5432/moneymanager
+spring.datasource.username=your_postgres_username
+spring.datasource.password=your_postgres_password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# =====================
+# JPA / Hibernate
+# =====================
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+
+# =====================
+# Email Configuration (Brevo SMTP)
+# =====================
+spring.mail.host=smtp-relay.brevo.com
+spring.mail.port=587
+spring.mail.username=your_brevo_smtp_username
+spring.mail.password=your_brevo_smtp_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.from=your-email@example.com
+
+# =====================
+# JWT Configuration
+# =====================
+jwt.secret=your_256bit_secret_key_here_minimum_32_characters
+
+# =====================
+# Application URLs
+# =====================
+money.manager.frontend.url=http://localhost:5173
+app.activation.url=http://localhost:8080/api/v1.0
+
+# =====================
+# Cloudinary Configuration
+# =====================
+cloudinary.cloud-name=your_cloud_name
+cloudinary.api-key=your_api_key
+cloudinary.api-secret=your_api_secret
+
+# =====================
+# Razorpay Configuration
+# =====================
+razorpay.key.id=your_razorpay_key_id
+razorpay.key.secret=your_razorpay_key_secret
+
+# =====================
+# Logging
+# =====================
+logging.level.org.springframework.security=DEBUG
